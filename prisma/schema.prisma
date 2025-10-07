@@ -1,0 +1,43 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model LeadForm {
+  id String @id @default(cuid())
+
+  // Personal Information
+  firstName String
+  lastName  String
+  email     String
+  country   String
+  linkedin  String
+
+  // Visa Categories
+  visaO1       Boolean @default(false)
+  visaEb1a     Boolean @default(false)
+  visaEb2niw   Boolean @default(false)
+  visaDontKnow Boolean @default(false)
+
+  // Resume/CV
+  resumeFileName String?
+  resumeFilePath String?
+
+  // Help Description
+  helpDescription String
+
+  // Lead Management
+  status String @default("PENDING") // PENDING, REACHED_OUT
+
+  // Metadata
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "lead_forms")
+}
