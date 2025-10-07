@@ -15,15 +15,52 @@ A modern, responsive lead management system built with Next.js, featuring a comp
 - **File Upload**: Resume/CV upload functionality
 - **Mobile Sidebar**: Collapsible navigation for mobile devices
 
-## 🛠 Tech Stack
+## 🏗 System Design
 
-- **Framework**: Next.js 14 with App Router
-- **Styling**: Styled Components with responsive design
-- **Database**: SQLite with Prisma ORM
+### Architecture Overview
+
+- **Frontend**: Next.js 14 with App Router and TypeScript
+- **Styling**: Styled Components with responsive design system
+- **Database**: SQLite with Prisma ORM for data persistence
 - **Forms**: JSON Forms for dynamic form generation
-- **Icons**: Lucide React for modern iconography
 - **Testing**: Vitest with React Testing Library
-- **TypeScript**: Full type safety throughout the application
+- **Icons**: Lucide React for modern iconography
+
+### Key Components
+
+- **UI Library**: Reusable components in `/components/ui/`
+- **Lead Management**: Form submission and data table components
+- **Authentication**: Token-based auth with route protection
+- **Responsive Design**: Mobile-first with tablet and desktop optimization
+
+##### Input Validation
+
+- **Client-side**: Form validation with JSON Forms
+- **Server-side**: Server action validation
+- **Database**: Prisma schema constraints
+
+### Data Flow
+
+```
+User Input → JSON Forms → Validation → Server Actions → Database
+Database → Server Actions → Components → UI Rendering
+```
+
+### Testing Strategy
+
+- **Unit Tests**: Component behavior and state management
+- **Integration Tests**: Form submission and navigation flows
+- **Mock Strategy**: Server actions and external dependencies
+- **Custom Utilities**: Theme provider and render helpers
+
+### External Dependencies
+
+- **Next.js**: Framework and routing
+- **Prisma**: Database ORM and migrations
+- **Styled Components**: CSS-in-JS styling
+- **JSON Forms**: Dynamic form generation
+- **Lucide React**: Icon library
+- **Vitest**: Testing framework
 
 ## 📋 Prerequisites
 
@@ -160,20 +197,3 @@ npm test -- src/app/__tests__/page.test.tsx
 - Leads page data management
 - Lead form validation
 - Component rendering
-
-## 📱 Responsive Design
-
-The application is fully responsive with breakpoints:
-
-- **Mobile** (< 768px): Stacked layout, collapsible sidebar, horizontal table scroll
-- **Tablet** (768px - 1024px): Hybrid layout with toggleable sidebar
-- **Desktop** (1024px+): Full sidebar, optimal spacing
-
-## 🎨 Styling
-
-The project uses a custom design system:
-
-- **Theme**: Centralized color palette and typography
-- **Components**: Reusable UI components with consistent styling
-- **Responsive**: Mobile-first approach with smooth transitions
-- **Accessibility**: Proper contrast ratios and keyboard navigation
